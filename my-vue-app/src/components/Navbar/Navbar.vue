@@ -41,7 +41,8 @@
         <div class="HLC-navbar-btns-direct-division">
            <router-link to="/Login" class="HLC-navbar-login-button">Login</router-link>
             <!-- <router-link to="Login">  <button class="HLC-navbar-login-button">Login</button> <router-link/> -->
-            <button class="HLC-navbar-signup-button">Sign Up</button>
+            <!-- <button class="HLC-navbar-signup-button">Sign Up</button> -->
+              <router-link to="/SignUp" class="HLC-navbar-signup-button"><button class="HLC-navbar-signup-button">Sign Up</button></router-link>
         </div>
       </div>
     </div>

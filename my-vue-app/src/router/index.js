@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import DefaultLayout from '../Layout/Layout.vue';
 import Home from '../HomeLandingPage/page.vue';
 import LoginLanding from '../Login/LoginLanding.vue';
-import LoginFOrm from '../Login/LoginFOrm.vue';
+import LoginFOrm from '../Login/LoginForm.vue';
 import DashboardLayout from "../Layout/DashboardLayout.vue";
+import SignupForm from '../Signup/SignupForm.vue';
 
 const routes = [
   {
@@ -21,6 +22,7 @@ const routes = [
         component: LoginLanding
       },
       { path: "/:role/login", component: LoginFOrm },
+      { path: "/SignUp", component: SignupForm },
 //   { path: "/:role/signup", component: () => import("../components/SignupForm.vue") },
     ]
   },
@@ -38,7 +40,12 @@ const routes = [
       { path: "/dashboard/parents/ParentDashboardSettingsCenter", component: () => import("../ParentDashboardPages/ParentDashboardSettingsInformation.vue") },
       { path: "/dashboard/parents/ParentDashboardPaymentGateway", component: () => import("../ParentDashboardPages/ParentDashboardPAymentGateway.vue") },
       { path: "/dashboard/parents/ParentDashboardAddStudent", component: () => import("../ParentDashboardPages/ParentDashboardAddNewStudent.vue") },
-      { path: "/dashboard/parents/ParentDashboardEnrolledStudents", component: () => import("../ParentDashboardPages/ParentDashboardEnrolledStudentsData.vue") }
+      { path: "/dashboard/parents/ParentDashboardEnrolledStudents", component: () => import("../ParentDashboardPages/ParentDashboardEnrolledStudentsData.vue") },
+      
+      
+      
+      { path: "/dashboard/tutor", component: () => import("../Dashboards/Tutor/page.vue") },
+      // { path: "/dashboard/tutor", component: () => import("../Dashboards/Tutor/page.vue") },
     ]
   }
 

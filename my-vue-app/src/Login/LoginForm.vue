@@ -10,7 +10,7 @@
         <!-- Email -->
         <label>Email</label>
         <input
-          type="email"
+          type="text"
           placeholder="your.email@example.com"
           v-model="email"
           required
@@ -31,7 +31,9 @@
         </div>
 
         <!-- Submit -->
-        <button type="submit" class="HLC-login-btn">Log In</button>
+        <button type="submit" class="HLC-login-btn" :disabled="loading">
+          {{ loading ? "Logging in..." : "Log In" }}
+        </button>
       </form>
 
       <div class="HLC-divider">OR</div>
@@ -45,6 +47,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "LoginForm",
   data() {
@@ -52,6 +56,7 @@ export default {
       email: "",
       password: "",
       showPassword: false,
+      loading: false,
     };
   },
   computed: {
@@ -68,20 +73,49 @@ export default {
     },
   },
   methods: {
-    handleLogin() {
-      // Simulate login success
-      alert(`Logging in as ${this.roleName}`);
+    async handleLogin() {
+      this.loading = true;
+      try {
+        // Backend expects "username" not email
+        const payload = {
+          username: this.email,
+          password: this.password,
+        };
 
-      // Redirect based on role
-      if (this.role === "parents") {
-        this.$router.push("/dashboard/parents");
-      } else if (this.role === "tutors") {
-        this.$router.push("/dashboard/tutors");
-      } else if (this.role === "admins") {
-        this.$router.push("/dashboard/admins");
-      } else {
-        // fallback route
-        this.$router.push("/");
+        const res = await axios.post("http://localhost:5000/api/auth/login", payload);
+
+        if (res.data.success) {
+          // Save token & user info
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+  
+  
+          localStorage.setItem("username", res.data.user.username);
+  localStorage.setItem("type", res.data.user.type);
+
+
+          // Redirect from backend response
+          if (res.data.redirectPath) {
+            this.$router.push(res.data.redirectPath);
+          } else {
+            // Fallback redirection by role
+            if (this.role === "parents") {
+              this.$router.push("/dashboard/parents");
+            } else if (this.role === "tutors") {
+              this.$router.push("/dashboard/tutors");
+            } else if (this.role === "admins") {
+              this.$router.push("/dashboard/admins");
+            } else {
+              this.$router.push("/");
+            }
+          }
+        } else {
+          alert(res.data.message || "Login failed");
+        }
+      } catch (err) {
+        alert(err.response?.data?.message || "Server error");
+      } finally {
+        this.loading = false;
       }
     },
   },

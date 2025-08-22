@@ -17,7 +17,7 @@
           Find qualified tutors, track your child’s progress, and manage schedules with ease.
         </p>
         <router-link to="/parents/login" class="HLC-login-btn-primary">Login</router-link>
-        <router-link to="/parents/signup" class="HLC-login-btn-secondary">Signup</router-link>
+        <router-link to="/SignUp" class="HLC-login-btn-secondary">Signup</router-link>
       </div>
 
       <!-- Tutors Card -->
@@ -28,11 +28,11 @@
           Connect with students, share your expertise, and grow your tutoring business.
         </p>
         <router-link to="/tutors/login" class="HLC-login-btn-primary">Login</router-link>
-        <router-link to="/tutors/signup" class="HLC-login-btn-secondary">Signup</router-link>
+        <router-link to="/SignUp" class="HLC-login-btn-secondary">Signup</router-link>
       </div>
 
       <!-- Admins Card -->
-      <div class="HLC-login-card">
+      <!-- <div class="HLC-login-card">
         <div class="HLC-login-icon">📊</div>
         <h3>For CRM & Admins</h3>
         <p>
@@ -40,7 +40,7 @@
         </p>
         <router-link to="/admins/login" class="HLC-login-btn-primary">Login</router-link>
         <router-link to="/admins/signup" class="HLC-login-btn-secondary">Signup</router-link>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
