@@ -49,7 +49,7 @@ export default {
 
     if (token) {
       try {
-        const res = await axios.get("/api/dashboard/parent", {
+        const res = await axios.get("http://localhost:5000/api/dashboard/parent", {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (res.data.success) {
