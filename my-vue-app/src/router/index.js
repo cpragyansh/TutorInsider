@@ -5,6 +5,9 @@ import LoginLanding from '../Login/LoginLanding.vue';
 import LoginFOrm from '../Login/LoginForm.vue';
 import DashboardLayout from "../Layout/DashboardLayout.vue";
 import SignupForm from '../Signup/SignupForm.vue';
+import TutorDashboardLayout from '../Layout/TutorDashboardLayout.vue';
+import ParentSignup from '../Signup/ParentSignup.vue';
+import ParentLogin from '../Login/ParentLogin.vue';
 
 const routes = [
   {
@@ -21,8 +24,12 @@ const routes = [
         name: 'Login',
         component: LoginLanding
       },
-      { path: "/:role/login", component: LoginFOrm },
+      { path: "/parents/login", component:ParentLogin },
+      { path: "/tutors/login", component: LoginFOrm },
+      // { path: "/:role/login", component: LoginFOrm },
+
       { path: "/SignUp", component: SignupForm },
+      { path: "/parents/SignUp", component: ParentSignup },
 //   { path: "/:role/signup", component: () => import("../components/SignupForm.vue") },
     ]
   },
@@ -30,7 +37,7 @@ const routes = [
 
 
   {
-    path: "/dashboard",
+    path: "/dashboard/parents",
     component: DashboardLayout,
     children: [
       { path: "/dashboard/parents", component: () => import("../Dashboards/Parent_Dashboard/page.vue") },
@@ -44,7 +51,23 @@ const routes = [
       
       
       
+      // { path: "/dashboard/tutor", component: () => import("../Dashboards/Tutor/page.vue") },
+      // { path: "/dashboard/tutor/classes", component: () => import("../Dashboards/Tutor/TutorUpcomingClasses.vue") },
+      // { path: "/dashboard/tutor", component: () => import("../Dashboards/Tutor/page.vue") },
+    ]
+  },
+  {
+    path: "/dashboard/tutor",
+    component: TutorDashboardLayout,
+    children: [
+      
+      
+      
+      
       { path: "/dashboard/tutor", component: () => import("../Dashboards/Tutor/page.vue") },
+      { path: "/dashboard/tutor/classes", component: () => import("../Dashboards/Tutor/TutorUpcomingClasses.vue") },
+      { path: "/dashboard/tutor/tutorInformationView", component: () => import("../Dashboards/Tutor/TutorInformationViewPage.vue") },
+      { path: "/dashboard/tutor/tutorInformationEdit", component: () => import("../Dashboards/Tutor/TutorInformationEditWindow.vue") },
       // { path: "/dashboard/tutor", component: () => import("../Dashboards/Tutor/page.vue") },
     ]
   }

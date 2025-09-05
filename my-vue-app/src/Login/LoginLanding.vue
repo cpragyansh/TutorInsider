@@ -17,7 +17,7 @@
           Find qualified tutors, track your child’s progress, and manage schedules with ease.
         </p>
         <router-link to="/parents/login" class="HLC-login-btn-primary">Login</router-link>
-        <router-link to="/SignUp" class="HLC-login-btn-secondary">Signup</router-link>
+        <router-link to="/Parents/SignUp" class="HLC-login-btn-secondary">Signup</router-link>
       </div>
 
       <!-- Tutors Card -->

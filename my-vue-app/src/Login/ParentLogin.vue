@@ -3,16 +3,16 @@
       <div class="HLC-login-box">
         <h1>Welcome Back</h1>
         <p class="HLC-login-subtitle">
-          Log in to access your {{ roleName }} account.
+          Log in to access your Parent account.
         </p>
 
         <form @submit.prevent="handleLogin">
           <!-- Email -->
-          <label>Username</label>
+          <label>Email</label>
           <input
             type="text"
-            placeholder="username"
-            v-model="username"
+            placeholder="your.email@example.com"
+            v-model="email"
             required
           />
 
@@ -40,7 +40,7 @@
 
         <p class="HLC-login-bottom">
           Don’t have an account?
-          <router-link :to="`/${role}/signup`">Sign up</router-link>
+          <router-link :to="`/parents/signup`">Sign up</router-link>
         </p>
       </div>
     </section>
@@ -53,7 +53,7 @@
     name: "LoginForm",
     data() {
       return {
-        username: "",
+        email: "",
         password: "",
         showPassword: false,
         loading: false,
@@ -61,10 +61,10 @@
     },
     computed: {
       role() {
-        return "tutors";
+        return "parents";
       },
       roleName() {
-        return "TutorConnect Tutor"
+          return "TutorConnect Parent";
       },
     },
     methods: {
@@ -73,37 +73,24 @@
         try {
           // Backend expects "username" not email
           const payload = {
-            username: this.username,
+            username: this.email,
             password: this.password,
           };
-          console.log("login Payload", payload)
-          const res = await axios.post("http://localhost:5000/api/auth/login", payload);
+
+          const res = await axios.post("http://localhost:5000/parents/auth/login", payload);
 
           if (res.data.success) {
             // Save token & user info
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(res.data.user));
     
-    this.$router.push("/dashboard/tutor"); // 👈 always parent dashboard
+    
             localStorage.setItem("username", res.data.user.username);
     localStorage.setItem("type", res.data.user.type);
 
 
             // Redirect from backend response
-            // if (res.data.redirectPath) {
-            //   this.$router.push(res.data.redirectPath);
-            // } else {
-            //   // Fallback redirection by role
-            //   if (this.role === "parents") {
-            //     this.$router.push("/dashboard/parents");
-            //   } else if (this.role === "tutors") {
-            //     this.$router.push("/dashboard/tutor");
-            //   } else if (this.role === "admins") {
-            //     this.$router.push("/dashboard/admins");
-            //   } else {
-            //     this.$router.push("/");
-            //   }
-            // }
+              this.$router.push("/dashboard/parents"); // 👈 always parent dashboard
           } else {
             alert(res.data.message || "Login failed");
           }

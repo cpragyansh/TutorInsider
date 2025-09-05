@@ -11,6 +11,8 @@
     <TutorAccountActivationStatus/>
     <TutorAccountPaymentSummary/>
     </div>
+    <TutorUpcomingClasses/>
+    <TutorScheduleChangeForm/>
   </div>
 </template>
 
@@ -19,9 +21,11 @@ import axios from "axios";
 import DashboardHeader from './DashboardHeader.vue';
 import TutorAccountActivationStatus from "./TutorAccountActivationStatus.vue";
 import TutorAccountPaymentSummary from "./TutorAccountPaymentSummary.vue";
+import TutorUpcomingClasses from "./TutorUpcomingClasses.vue";
+import TutorScheduleChangeForm from "./TutorScheduleChangeForm.vue";
 
 export default {
-  components: { DashboardHeader,TutorAccountActivationStatus,TutorAccountPaymentSummary },
+  components: { DashboardHeader,TutorAccountActivationStatus,TutorAccountPaymentSummary,TutorUpcomingClasses,TutorScheduleChangeForm },
   data() {
     return {
       user: {
@@ -40,7 +44,7 @@ export default {
 
     if (token) {
       try {
-        const res = await axios.get("http://localhost:5000/api/dashboard/tutor", {
+        const res = await axios.get("http://localhost:5000/api/me", {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (res.data.success) {

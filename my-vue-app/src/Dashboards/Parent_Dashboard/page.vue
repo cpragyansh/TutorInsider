@@ -1,6 +1,11 @@
 <template>
   <div>
     <DashboardHeader :username="user.username" :type="user.type"/>
+     <div class="tutor-dashboard-content">
+      <h1>Parent Dashboard</h1>
+      <!-- Here you can show tutor-specific data -->
+      <pre>{{ dashboardData }}</pre>
+    </div>
     <div class="parent-dashboard-content">
       <div class="parent-dashboard-first-combined-section-mixing-block">
         <DemoSection />
@@ -49,7 +54,7 @@ export default {
 
     if (token) {
       try {
-        const res = await axios.get("http://localhost:5000/api/dashboard/parent", {
+        const res = await axios.get("http://localhost:5000/parents/me", {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (res.data.success) {

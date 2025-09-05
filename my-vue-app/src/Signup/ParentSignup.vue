@@ -44,13 +44,13 @@
         <!-- Type -->
         <select v-model="form.type">
           <!-- <option value="" disabled>Select Type</option> -->
-          <option value="tutor" >Tutor</option>
-          <!-- <option value="parent" disabled>Parent</option> -->
+          <!-- <option value="tutor">Tutor</option> -->
+          <option value="parent" disabled>Parent</option>
         </select>
         <p v-if="errors.type" class="error">{{ errors.type }}</p>
 
-        <!-- Tutor-specific (only if tutor selected) -->
-        <div v-if="form.type === 'tutor'">
+        <!-- Tutor-specific (only if tutor selected)
+        <div v-if="form.type === 'parent'">
           <select v-model="form.mode_of_teaching">
             <option value="" disabled>Mode of Teaching</option>
             <option value="Online">Online</option>
@@ -71,11 +71,11 @@
           <input v-model="form.time_from" type="time" />
           <input v-model="form.time_to" type="time" />
 
-          <textarea v-model="form.special_request" placeholder="Special Request"></textarea>
           <input v-model="form.academic_background" type="text" placeholder="Academic Background" />
-          <input v-model="form.profile_photo_url" type="text" placeholder="Profile Photo URL" />
-        </div>
-
+        </div> -->
+        
+        <input v-model="form.profile_photo_url" type="text" placeholder="Profile Photo URL" />
+        <textarea v-model="form.special_request" placeholder="Special Request"></textarea>
         <button type="submit" :disabled="loading">{{ loading ? 'Signing up...' : 'Sign Up' }}</button>
       </form>
 
@@ -105,15 +105,15 @@ export default {
         city: "",
         pincode: "",
         street: "",
-        type: "",
-        mode_of_teaching: "",
-        teaching_experience: "",
-        custom_experience: "",
-        job_type: "",
-        time_from: "",
-        time_to: "",
+        type: "parent",
+        // mode_of_teaching: "",
+        // teaching_experience: "",
+        // custom_experience: "",
+        // job_type: "",
+        // time_from: "",
+        // time_to: "",
         special_request: "",
-        academic_background: "",
+        // academic_background: "",
         profile_photo_url: "",
       },
       errors: {},
@@ -142,7 +142,7 @@ export default {
       this.loading = true;
       this.backendMessage = "";
       try {
-        const res = await axios.post("http://localhost:5000/api/auth/signup", this.form);
+        const res = await axios.post("http://localhost:5000/parents/auth/signup", this.form);
         if (res.data.success) {
           this.backendSuccess = true;
           this.backendMessage = "Signup successful!";

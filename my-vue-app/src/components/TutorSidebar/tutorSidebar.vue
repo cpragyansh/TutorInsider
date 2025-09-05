@@ -13,15 +13,15 @@
     <nav>
       <ul>
         <li>
-          <router-link to="/dashboard/parents" class="nav-item" active-class="active">
+          <router-link to="/dashboard/tutor" class="nav-item" active-class="active">
             <i class="icon">🏠</i>
-            <span v-if="!collapsed">Dashboard</span>
+            <span v-if="!collapsed">Overvieww</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/dashboard/parents/Schedule" class="nav-item" active-class="active">
+          <router-link to="/dashboard/tutor/classes" class="nav-item" active-class="active">
             <i class="icon">📅</i>
-            <span v-if="!collapsed">Manage Classes</span>
+            <span v-if="!collapsed">Schedule</span>
           </router-link>
         </li>
         <!-- <li>
@@ -33,7 +33,7 @@
         <li>
           <router-link to="/dashboard/parents/CourseManagement" class="nav-item" active-class="active">
             <i class="icon">📖</i>
-            <span v-if="!collapsed">Enrolled Courses</span>
+            <span v-if="!collapsed">My Courses</span>
           </router-link>
         </li>
       </ul>
@@ -55,9 +55,9 @@
           </router-link>
         </li> -->
         <li>
-          <router-link to="/dashboard/parents/ParentDashboardSettingsCenter" class="nav-item" active-class="active">
+          <router-link to="/dashboard/tutor/tutorInformationView" class="nav-item" active-class="active">
             <i class="icon">⚙️</i>
-            <span v-if="!collapsed">Profile</span>
+            <span v-if="!collapsed">Settings</span>
           </router-link>
         </li>
       </ul>
@@ -78,7 +78,7 @@
         <li>
           <router-link to="/dashboard/parents/ParentDashboardAddStudent" class="nav-item" active-class="active">
             <i class="icon">➕</i>
-            <span v-if="!collapsed">Request New Class</span>
+            <span v-if="!collapsed">Add New Student</span>
           </router-link>
         </li>
         <li>

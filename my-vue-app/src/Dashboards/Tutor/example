@@ -1,0 +1,379 @@
+<template>
+  <div class="edit-container">
+    <h2 class="page-title">Edit Profile</h2>
+    <p class="subtitle">Manage and update your profile settings below.</p>
+
+    <!-- Profile Picture -->
+    <div class="card">
+      <h3 class="section-title">Profile Picture</h3>
+      <div class="profile-pic-section">
+        <img :src="previewImage || defaultPic" alt="Profile" class="profile-pic" />
+        <div class="upload-controls">
+          <label for="profileUpload" class="upload-label">Update Profile Photo</label>
+          <input id="profileUpload" type="file" @change="previewFile" />
+          <p class="hint">Accepted formats: JPG, PNG. Max size: 5MB.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal Details -->
+    <div class="card">
+      <h3 class="section-title">Personal Details</h3>
+      <div class="grid-2">
+        <input v-model="form.firstName" placeholder="First Name" />
+        <input v-model="form.lastName" placeholder="Last Name" />
+      </div>
+      <div class="gender-toggle">
+        <label>Gender:</label>
+        <button :class="{active: form.gender==='Male'}" @click="form.gender='Male'">Male</button>
+        <button :class="{active: form.gender==='Female'}" @click="form.gender='Female'">Female</button>
+      </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="card">
+      <h3 class="section-title">Contact Information</h3>
+      <div class="grid-2">
+        <input v-model="form.mobile" placeholder="Mobile No." />
+        <input v-model="form.email" placeholder="Email Address" />
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="card">
+      <h3 class="section-title">Address</h3>
+      <div class="grid-2">
+        <select v-model="form.country">
+          <option>India</option>
+          <option>USA</option>
+          <option>UK</option>
+        </select>
+        <input v-model="form.state" placeholder="State" />
+      </div>
+      <div class="grid-2">
+        <input v-model="form.city" placeholder="City" />
+        <input v-model="form.pincode" placeholder="Pincode" />
+      </div>
+      <input v-model="form.street" placeholder="Street Address" />
+    </div>
+
+    <!-- Teaching Preferences -->
+    <div class="card">
+      <h3 class="section-title">Teaching Preferences</h3>
+      <div class="grid-2">
+        <select v-model="form.modeOfTeaching">
+          <option>Online</option>
+          <option>Offline</option>
+          <option>Both</option>
+        </select>
+        <select v-model="form.teachingExperience">
+          <option v-for="i in 10" :key="i">{{i}} Years</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div v-if="form.teachingExperience==='Other'">
+        <input v-model="form.customExperience" placeholder="Enter Experience" />
+      </div>
+      <div class="grid-2">
+        <select v-model="form.jobType">
+          <option>Part-time</option>
+          <option>Full-time</option>
+          <option>Both</option>
+        </select>
+        <div class="grid-2">
+          <input type="time" v-model="form.timeFrom" />
+          <input type="time" v-model="form.timeTo" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Special Requests -->
+    <div class="card">
+      <h3 class="section-title">Special Requests</h3>
+      <textarea v-model="form.specialRequest" placeholder="Any special notes or requests?"></textarea>
+    </div>
+
+    <!-- Document Upload -->
+    <div class="card">
+      <h3 class="section-title">Document Upload</h3>
+      <div v-for="doc in documents" :key="doc.name" class="upload-row">
+        <label>{{doc.label}}</label>
+        <input type="file" @change="startUpload(doc.name)" />
+        <div class="progress-bar">
+          <div class="progress" :style="{width: doc.progress+'%'}"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Qualification -->
+    <div class="card">
+      <h3 class="section-title">Qualification</h3>
+      <div class="grid-2">
+        <select v-model="form.academicBackground">
+          <option>Bachelor's Degree</option>
+          <option>Master's Degree</option>
+          <option>PhD</option>
+        </select>
+        <input type="file" @change="startUpload('degree')" />
+      </div>
+    </div>
+
+    <!-- Classes Information -->
+    <div class="card">
+      <h3 class="section-title">Classes Information</h3>
+      <div class="grid-2">
+        <select><option>Primary / Pre-Primary / LKG / UKG</option></select>
+        <select><option>Special Kid (ADHD/ADD/AUTISM)</option></select>
+        <select><option>1st - 5th Classes</option></select>
+        <select><option>Software Technologies</option></select>
+        <select><option>6th - 8th Classes</option></select>
+        <select><option>Others</option></select>
+        <select><option>9th Class</option></select>
+        <select><option>Photography</option></select>
+        <select><option>10th Class</option></select>
+        <select><option>Music Instruments</option></select>
+        <select><option>11th Class</option></select>
+        <select><option>Painting</option></select>
+        <select><option>12th Class</option></select>
+        <select><option>Indian Languages</option></select>
+        <select><option>NEET</option></select>
+        <select><option>Foreign Languages</option></select>
+        <select><option>IMUCET</option></select>
+        <select><option>Drawing</option></select>
+        <select><option>NATA</option></select>
+        <select><option>Yoga</option></select>
+        <select><option>JEE Main</option></select>
+        <select><option>Singing</option></select>
+        <select><option>JEE Advance</option></select>
+        <select><option>Dance</option></select>
+      </div>
+    </div>
+
+    <!-- Other Skills -->
+    <div class="card">
+      <h3 class="section-title">Other Skills</h3>
+      <div class="grid-2">
+        <input placeholder="Other Option 1" />
+        <input placeholder="Other Option 2" />
+        <input placeholder="Other Option 3" />
+        <input placeholder="Other Option 4" />
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button class="submit-btn">Save Changes</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "EditProfile",
+  data() {
+    return {
+      defaultPic: "https://via.placeholder.com/100",
+      previewImage: null,
+      form: {
+        firstName: "Demo",
+        lastName: "Tutor",
+        gender: "Male",
+        mobile: "9887181967",
+        email: "sukritmehra2005@yahoo.co.in",
+        country: "India",
+        state: "Rajasthan",
+        city: "Udaipur",
+        pincode: "313001",
+        street: "",
+        modeOfTeaching: "Online",
+        teachingExperience: "5 Years",
+        customExperience: "",
+        jobType: "Full-time",
+        timeFrom: "09:00",
+        timeTo: "17:00",
+        specialRequest: "",
+        academicBackground: "Bachelor's Degree",
+      },
+      documents: [
+        { name: "address", label: "Address Proof", progress: 0 },
+        { name: "photo", label: "Photo ID", progress: 0 },
+        { name: "aadhaar", label: "Masked Aadhaar", progress: 0 },
+        { name: "cv", label: "CV / Resume", progress: 0 },
+        { name: "video", label: "Intro Video", progress: 0 },
+      ],
+    };
+  },
+  methods: {
+    previewFile(event) {
+      const file = event.target.files[0];
+      if (file) {
+        this.previewImage = URL.createObjectURL(file);
+      }
+    },
+    startUpload(docName) {
+      let doc = this.documents.find(d => d.name === docName);
+      if (!doc) return;
+      doc.progress = 0;
+      let interval = setInterval(() => {
+        if (doc.progress >= 100) clearInterval(interval);
+        else doc.progress += 10;
+      }, 200);
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Page layout */
+.edit-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background: #f9fafb;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.page-title {
+  font-size: 26px;
+  margin-bottom: 6px;
+  color: #111827;
+}
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* Card styling */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 5px;
+}
+
+/* Inputs & selects */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+  outline: none;
+}
+
+/* Grid layout */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Profile pic */
+.profile-pic-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #e5e7eb;
+}
+.upload-label {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+.upload-label:hover {
+  background: #1d4ed8;
+}
+.hint {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Gender toggle */
+.gender-toggle {
+  margin-top: 12px;
+}
+.gender-toggle button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  background: #f3f4f6;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.gender-toggle button.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+/* Textarea */
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Upload progress */
+.upload-row {
+  margin-bottom: 16px;
+}
+.progress-bar {
+  background: #e5e7eb;
+  height: 8px;
+  border-radius: 6px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+.progress {
+  height: 100%;
+  background: #10b981;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* Submit button */
+.submit-btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  transition: background 0.3s, transform 0.2s;
+}
+.submit-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+</style>
