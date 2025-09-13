@@ -166,10 +166,17 @@ export default {
     margin: 0 auto;
     padding: clamp(16px, 4vw, 28px);
     min-height: 540px;
+display: flex;
+ justify-content: center;
+ align-items: center;  
+ margin-top: 2vw; 
 }
 
 .slide {
     background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -178,19 +185,27 @@ export default {
     grid-template-columns: 1fr 1.1fr;
     align-items: center;
     gap: clamp(24px, 4vw, 56px);
+    justify-items: center;
 }
 
 /* Image + blob */
 .image-wrap {
     display: grid;
     place-items: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
 .blob {
-    width: min(620px, 42vw);
+    width: 25vw;
     height: auto;
     display: block;
     border-radius: 20%;
+    justify-content: center;
+    align-self:center;
+    align-items: center;
+    margin: auto;
 }
 
 /* Copy */

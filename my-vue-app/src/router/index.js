@@ -8,6 +8,12 @@ import SignupForm from '../Signup/SignupForm.vue';
 import TutorDashboardLayout from '../Layout/TutorDashboardLayout.vue';
 import ParentSignup from '../Signup/ParentSignup.vue';
 import ParentLogin from '../Login/ParentLogin.vue';
+import AboutUs from '../HomeAboutPages/page.vue';
+import Component1 from '../HomeCategoryPages/page.vue';
+import HomeTutor from '../HomeForTutorPages/page.vue';
+import HomeParentcomponent1 from '../HomeForParentsPage/page.vue';
+import HomeFaqsSection from '../HomeFaqspages/page.vue';
+// import Page from '../HomeAboutPages/page.vue';
 
 const routes = [
   {
@@ -31,6 +37,35 @@ const routes = [
       { path: "/SignUp", component: SignupForm },
       { path: "/parents/SignUp", component: ParentSignup },
 //   { path: "/:role/signup", component: () => import("../components/SignupForm.vue") },
+
+ {
+        path: '/AboutUs', // ✅ Empty path means it loads at "/"
+        name: 'AboutUs',
+        component: AboutUs
+      },
+ {
+        path: '/Category', // ✅ Empty path means it loads at "/"
+        name: 'Category',
+        component: Component1
+      },
+ {
+        path: '/forTutor', // ✅ Empty path means it loads at "/"
+        name: 'ForTutor',
+        component: HomeTutor
+
+      },
+ {
+        path: '/forParent', // ✅ Empty path means it loads at "/"
+        name: 'ForParent',
+        component: HomeParentcomponent1
+
+      },
+ {
+        path: 'homeFaqs',
+        name:'homeFaqs',
+        component: HomeFaqsSection
+
+      },
     ]
   },
 

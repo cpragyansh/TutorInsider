@@ -1,14 +1,14 @@
 <template>
     <div>
         <HomePageSlider />
-        <HowItWorks />
-        <OurServiceshome />
-        <ServiceList />
-        <ExploreCategory />
-        <ParentSays />
-        <ExpertTutors />
+        <!-- <ServiceList /> -->
+        <!-- <ExploreCategory /> -->
+        <!-- <ParentSays /> -->
+        <!-- <ExpertTutors /> -->
         <HomeLandingC1 />
+        <HowItWorks />
         <HomeLandingC2 />
+        <OurServiceshome />
         <HomeLandingC3 />
         <HomeLandingC4 />
         <HomeLandingC5 />

@@ -14,7 +14,7 @@
 
       <div class="tutors__grid">
         <article class="tutor-card">
-          <img class="tutor-card__img" src="/assets/tutors/math.jpg" alt="" />
+          <!-- <img class="tutor-card__img" src="/assets/tutors/math.jpg" alt="" /> -->
           <div class="tutor-card__body">
             <h3>Anjali Mehra</h3>
             <div class="muted">7+ Years Experience</div>
@@ -23,7 +23,7 @@
         </article>
 
         <article class="tutor-card">
-          <img class="tutor-card__img" src="/assets/tutors/science.jpg" alt="" />
+          <!-- <img class="tutor-card__img" src="/assets/tutors/science.jpg" alt="" /> -->
           <div class="tutor-card__body">
             <h3>Rahul Verma</h3>
             <div class="muted">5+ Years Experience</div>
@@ -32,7 +32,7 @@
         </article>
 
         <article class="tutor-card">
-          <img class="tutor-card__img" src="/assets/tutors/special.jpg" alt="" />
+          <!-- <img class="tutor-card__img" src="/assets/tutors/special.jpg" alt="" /> -->
           <div class="tutor-card__body">
             <h3>Nidhi Arora</h3>
             <div class="muted">4+ Years Experience</div>
@@ -41,7 +41,7 @@
         </article>
 
         <article class="tutor-card">
-          <img class="tutor-card__img" src="/assets/tutors/english.jpg" alt="" />
+          <!-- <img class="tutor-card__img" src="/assets/tutors/english.jpg" alt="" /> -->
           <div class="tutor-card__body">
             <h3>Manoj Saini</h3>
             <div class="muted">10+ Years Experience</div>

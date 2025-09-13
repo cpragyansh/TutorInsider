@@ -1,15 +1,20 @@
 <template>
   <nav class="navbar">
     <div class="nav-container">
-      <div class="nav-logo">Tutor Insider</div>
+      <div class="nav-logo"><img src="https://tutorinsider.com/wp-content/uploads/2025/05/tutor_Insider_Logo-1.png" alt="" class="navbar-tutorinsider-logo"></div>
 
       <button class="menu-toggle" @click="toggleMobileMenu">
         ☰
       </button>
 
       <ul :class="['nav-links', { 'nav-active': mobileMenuOpen }]">
-        <li><a href="#">Home</a></li>
-
+        <li><a href="/">Home</a></li>
+        <li><a href="/AboutUs">About Us</a></li>
+        <li><a href="/Category">Category</a></li>
+        <li><a href="/forTutor">For Tutor</a></li>
+        <li><a href="/forParent">For Parents</a></li>
+        <li><a href="/homeFaqs">FAQS</a></li>
+<!-- 
         <li
           class="dropdown"
           @mouseenter="openDropdown('services')"
@@ -21,8 +26,8 @@
             <li><a href="#">Mobile App</a></li>
             <li><a href="#">SEO</a></li>
           </ul>
-        </li>
-
+        </li> -->
+<!-- 
         <li
           class="dropdown"
           @mouseenter="openDropdown('about')"
@@ -33,7 +38,7 @@
             <li><a href="#">Our Team</a></li>
             <li><a href="#">Careers</a></li>
           </ul>
-        </li>
+        </li> -->
 
         <li><a href="#">Contact</a></li>
       </ul>
@@ -86,9 +91,8 @@ export default {
   align-items: center;
 }
 
-.nav-logo {
-  font-size: 1.2rem;
-  font-weight: bold;
+.navbar-tutorinsider-logo{
+  height: 6vh;
 }
 
 .menu-toggle {

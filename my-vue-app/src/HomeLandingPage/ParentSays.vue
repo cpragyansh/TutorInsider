@@ -11,7 +11,7 @@
 
       <div class="tms__grid">
         <article class="tms-card">
-          <img class="tms-card__avatar" src="/assets/avatars/parent-1.jpg" alt="" />
+          <!-- <img class="tms-card__avatar" src="/assets/avatars/parent-1.jpg" alt="" /> -->
           <p class="tms-card__quote">
             This platform helped me find the perfect home tutor for my daughter. Her grades and
             confidence have improved!
@@ -21,7 +21,7 @@
         </article>
 
         <article class="tms-card">
-          <img class="tms-card__avatar" src="/assets/avatars/parent-2.jpg" alt="" />
+          <!-- <img class="tms-card__avatar" src="/assets/avatars/parent-2.jpg" alt="" /> -->
           <p class="tms-card__quote">
             We found a wonderful special educator for our child with learning difficulties. We’ve
             seen great improvement in academics and confidence.
@@ -31,7 +31,7 @@
         </article>
 
         <article class="tms-card">
-          <img class="tms-card__avatar" src="/assets/avatars/parent-3.jpg" alt="" />
+          <!-- <img class="tms-card__avatar" src="/assets/avatars/parent-3.jpg" alt="" /> -->
           <p class="tms-card__quote">
             Very thankful for the shadow teacher support. My son feels more included and supported
             in class now.
